@@ -63,12 +63,18 @@ export class ProductosService {
   }
 
 
-  updateProducto(producto: Producto): Producto | null {
-    const productoExists = this.productos.find(p => p.codigo === producto.codigo);
+  updateProducto(idProducto: string, producto: Producto): Producto | null {
+    const productoExists = this.productos.find(p => p.codigo === idProducto);
     if (!productoExists) {
       return null;
     }
-    this.productos = this.productos.map(p => p.codigo === producto.codigo ? producto : p);
+    this.productos = this.productos.map(p => {
+      if (p.codigo === idProducto) {
+        return producto;
+      }
+      return p;
+    });
+
     this.addProductosToLocalstorage();
     return producto;
   }
