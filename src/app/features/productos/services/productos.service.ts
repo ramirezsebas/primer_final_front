@@ -12,8 +12,12 @@ export class ProductosService {
     this.initProductos();
   }
 
+  private addProductosToLocalstorage() {
+    localStorage.setItem('productos', JSON.stringify(this.productos));
+  }
+
   private initProductos() {
-    for (let index = 0; index < 50; index++) {
+    for (let index = 0; index < 100; index++) {
       this.productos.push({
         codigo: `codigo-${index}`,
         nombre: `nombre-${index}`,
@@ -21,56 +25,64 @@ export class ProductosService {
         existencia: 10
       });
     }
+    if (localStorage.getItem('productos') == null) {
+      this.addProductosToLocalstorage();
+    }
+  }
+
+  private getProductosFromLocalStorage(): Producto[] {
+    return JSON.parse(localStorage.getItem('productos') || '[]');
   }
 
 
   getProductos(): Producto[] {
-    return this.productos;
-    // return of(this.productos).pipe(delay(4000));
+    return this.getProductosFromLocalStorage();
   }
 
 
 
-  getProducto(codigo: string): Observable<Producto | null> {
-    let producto = this.productos.find(p => p.codigo === codigo);
+  getProducto(codigo: string): Producto | null {
+    const producto = this.getProductos().find(p => p.codigo === codigo);
     if (!producto) {
-      return of(null);
+      return null;
     }
-    return of(producto).pipe(delay(4000));
+    return producto;
+
   }
 
 
 
-  createProducto(producto: Producto): Observable<Producto> {
+  createProducto(producto: Producto): Producto | null {
+    const productoExists = this.productos.find(p => p.codigo === producto.codigo);
+    if (productoExists) {
+      return null;
+    }
     this.productos.push(producto);
-    return of(producto).pipe(delay(4000));
+    this.addProductosToLocalstorage();
+    return producto;
   }
 
 
-  updateProducto(producto: Producto): Observable<Producto | null> {
-    const index = this.productos.findIndex(p => p.codigo === producto.codigo);
-    if (index === -1) {
-      return of(null);
+  updateProducto(producto: Producto): Producto | null {
+    const productoExists = this.productos.find(p => p.codigo === producto.codigo);
+    if (!productoExists) {
+      return null;
     }
-    this.productos[index] = producto;
-    return of(producto).pipe(delay(4000));
+    this.productos = this.productos.map(p => p.codigo === producto.codigo ? producto : p);
+    this.addProductosToLocalstorage();
+    return producto;
   }
 
 
 
-  deleteProducto(codigo: string): Observable<Producto | null> {
+  deleteProducto(codigo: string): Producto | null {
     const producto = this.productos.find(p => p.codigo === codigo);
     if (!producto) {
-      return of(null);
+      return null;
     }
-
-    if (producto.existencia === 0) {
-      return of(null);
-    }
-
     this.productos = this.productos.filter(p => p.codigo !== codigo);
-
-    return of(producto).pipe(delay(4000));
+    this.addProductosToLocalstorage();
+    return producto;
   }
 
 
