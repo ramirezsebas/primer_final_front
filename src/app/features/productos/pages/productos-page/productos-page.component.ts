@@ -35,7 +35,28 @@ export class ProductosPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (result) {
+        if (producto) {
+          this.productosService.updateProducto(producto.codigo, result);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Se ha actualizado el producto correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        } else {
+          this.productosService.createProducto(result);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Se ha creado el producto correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+        }
+      }
     });
   }
 
