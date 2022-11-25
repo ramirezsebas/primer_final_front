@@ -5,7 +5,7 @@
     <section>
       <mat-form-field appearance="fill">
         <mat-label>RUC</mat-label>
-        <input matInput ngDefaultControl formControlName="ruc" readonly />
+        <input matInput ngDefaultControl formControlName="ruc" />
         <mat-error *ngIf="myForm.get('ruc')?.hasError('required')">
           RUC es requerido
         </mat-error>
