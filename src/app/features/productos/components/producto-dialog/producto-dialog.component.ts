@@ -3,6 +3,8 @@ import { Component, Inject } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Producto } from '../../models/producto.model';
+import * as uuid from 'uuid';
+
 
 
 @Component({
@@ -16,6 +18,7 @@ export class ProductoDialogComponent {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
+      codigo: [this.producto?.codigo ?? uuid.v4(), Validators.required],
       nombre: [this.producto?.nombre ?? "", Validators.required],
       precioVenta: [this.producto?.precioVenta ?? "", Validators.required],
       existencia: [this.producto?.existencia ?? "", Validators.required],

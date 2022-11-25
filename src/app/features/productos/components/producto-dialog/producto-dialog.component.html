@@ -4,6 +4,15 @@
   <form [formGroup]="myForm">
     <section>
       <mat-form-field appearance="fill">
+        <mat-label>Codigo</mat-label>
+        <input matInput ngDefaultControl formControlName="codigo" readonly />
+        <mat-error *ngIf="myForm.get('codigo')?.hasError('required')">
+          Codigo es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input matInput ngDefaultControl formControlName="nombre" />
         <mat-error *ngIf="myForm.get('nombre')?.hasError('required')">
