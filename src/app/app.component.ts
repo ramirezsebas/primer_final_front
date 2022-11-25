@@ -14,6 +14,10 @@ export class AppComponent {
       title: 'Productos',
       path: '/productos'
     },
+    {
+      title: 'Clientes',
+      path: '/clientes'
+    },
   ];
 
   fillerContent = Array.from(
