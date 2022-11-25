@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { delay, from, Observable, of } from 'rxjs';
 import { Producto } from '../models/producto.model';
+import * as uuid from 'uuid';
+import { faker } from '@faker-js/faker';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +19,12 @@ export class ProductosService {
   }
 
   private initProductos() {
-    for (let index = 0; index < 100; index++) {
+    for (let index = 0; index < 1000; index++) {
       this.productos.push({
-        codigo: `codigo-${index}`,
-        nombre: `nombre-${index}`,
-        precioVenta: 102 * 2 + index,
-        existencia: 10
+        codigo: uuid.v4(),
+        nombre: faker.commerce.product(),
+        precioVenta: Number(faker.commerce.price()),
+        existencia: faker.datatype.number(100),
       });
     }
     if (localStorage.getItem('productos') == null) {
