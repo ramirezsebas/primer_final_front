@@ -68,6 +68,10 @@ export class ProductosPageComponent implements OnInit {
     this.openDialog(producto);
   }
 
+  agregar() {
+    this.openDialog(null);
+  }
+
   eliminar(producto: Producto) {
     Swal.fire({
       title: 'Estas seguro que quieres eliminar el producto?',
