@@ -19,16 +19,18 @@ export class ProductosService {
   }
 
   private initProductos() {
-    for (let index = 0; index < 1000; index++) {
-      this.productos.push({
-        codigo: uuid.v4(),
-        nombre: faker.commerce.product(),
-        precioVenta: Number(faker.commerce.price()),
-        existencia: faker.datatype.number(100),
-      });
-    }
     if (localStorage.getItem('productos') == null) {
+      for (let index = 0; index < 1000; index++) {
+        this.productos.push({
+          codigo: uuid.v4(),
+          nombre: faker.commerce.product(),
+          precioVenta: Number(faker.commerce.price()),
+          existencia: faker.datatype.number(100),
+        });
+      }
       this.addProductosToLocalstorage();
+    } else {
+      this.productos = this.getProductosFromLocalStorage();
     }
   }
 
@@ -78,18 +80,21 @@ export class ProductosService {
     });
 
     this.addProductosToLocalstorage();
+
     return producto;
   }
 
 
 
   deleteProducto(codigo: string): Producto | null {
+
     const producto = this.productos.find(p => p.codigo === codigo);
     if (!producto) {
       return null;
     }
     this.productos = this.productos.filter(p => p.codigo !== codigo);
     this.addProductosToLocalstorage();
+
     return producto;
   }
 
