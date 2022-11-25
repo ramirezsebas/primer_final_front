@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>{{producto? "Actualizar Producto":"Crear Producto"}}</h1>
+<div mat-dialog-content class="mat-typography">
+  <p>Ingrese los datos</p>
+  <form [formGroup]="myForm">
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput ngDefaultControl formControlName="nombre" />
+        <mat-error *ngIf="myForm.get('nombre')?.hasError('required')">
+          Nombre es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>Precio Venta</mat-label>
+        <input matInput ngDefaultControl formControlName="precioVenta" />
+        <mat-error *ngIf="myForm.get('precioVenta')?.hasError('required')">
+          Precio Venta es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>Existencia</mat-label>
+        <input matInput ngDefaultControl formControlName="existencia" />
+        <mat-error *ngIf="myForm.get('existencia')!.hasError('required')">
+          Existencia es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="onClick()" cdkFocusInitial>{{producto?"Modificar":"Agregar"}}</button>
+</div>
