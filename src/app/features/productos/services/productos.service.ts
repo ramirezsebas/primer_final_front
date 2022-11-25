@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, from, Observable, of } from 'rxjs';
+import { delay, from, Observable, of, Subject } from 'rxjs';
 import { Producto } from '../models/producto.model';
 import * as uuid from 'uuid';
 import { faker } from '@faker-js/faker';
@@ -9,6 +9,7 @@ import { faker } from '@faker-js/faker';
 })
 export class ProductosService {
   productos: Producto[] = [];
+  refresh$ = new Subject<void>();
 
   constructor() {
     this.initProductos();
@@ -63,6 +64,7 @@ export class ProductosService {
     }
     this.productos.push(producto);
     this.addProductosToLocalstorage();
+    this.refresh$.next();
     return producto;
   }
 
@@ -80,6 +82,7 @@ export class ProductosService {
     });
 
     this.addProductosToLocalstorage();
+    this.refresh$.next();
 
     return producto;
   }
@@ -94,6 +97,7 @@ export class ProductosService {
     }
     this.productos = this.productos.filter(p => p.codigo !== codigo);
     this.addProductosToLocalstorage();
+    this.refresh$.next();
 
     return producto;
   }

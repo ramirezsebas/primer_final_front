@@ -61,6 +61,9 @@ export class ProductosPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.data = this.productosService.getProductos();
+    this.productosService.refresh$.subscribe(() => {
+      this.dataSource.data = this.productosService.getProductos();
+    });
   }
 
   editar(producto: Producto) {
