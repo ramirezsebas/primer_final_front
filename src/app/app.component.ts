@@ -12,7 +12,6 @@ export class AppComponent {
   routes = [
     {
       title: 'Productos',
-      icon: 'shopping_cart',
       path: '/productos'
     },
   ];
