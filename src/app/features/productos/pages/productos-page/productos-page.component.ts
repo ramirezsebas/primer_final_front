@@ -28,7 +28,6 @@ export class ProductosPageComponent implements OnInit {
 
 
   openDialog(producto: Producto | null): void {
-    console.log(producto);
     const dialogRef = this.dialog.open(ProductoDialogComponent, {
       width: '250px',
       data: producto
@@ -80,8 +79,24 @@ export class ProductosPageComponent implements OnInit {
       denyButtonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.productosService.deleteProducto(producto.codigo);
-        Swal.fire(`Eliminado el producto ${producto.codigo}!`, '', 'success')
+        let deletedCaja = this.productosService.deleteProducto(producto.codigo);
+        if (!deletedCaja) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: `No existe el producto con el codigo ${producto.codigo}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `Se ha eliminado el producto con el codigo ${producto.codigo}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       }
     })
   }
