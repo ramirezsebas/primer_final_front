@@ -45,7 +45,7 @@ export class DetalleDetalleVentassService {
   }
 
   private getDetalleVentassFromLocalStorage(): DetalleVenta[] {
-    return JSON.parse(localStorage.getItem('detalleVentas') || '[]');
+    return JSON.parse(localStorage.getItem('detalle-ventas') || '[]');
   }
 
 
