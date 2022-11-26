@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientesPageComponent } from './features/clientes/pages/clientes-page/clientes-page.component';
 import { ProductosPageComponent } from './features/productos/pages/productos-page/productos-page.component';
+import { VentaDetallePageComponent } from './features/ventas/pages/venta-detalle-page/venta-detalle-page.component';
 import { VentaResumidoPageComponent } from './features/ventas/pages/venta-resumido-page/venta-resumido-page.component';
 
 const routes: Routes = [
@@ -16,7 +17,12 @@ const routes: Routes = [
   {
     path: 'ventas',
     component: VentaResumidoPageComponent
-  }
+  },
+  {
+    path: 'detalle-ventas',
+    component: VentaDetallePageComponent
+  },
+
 
 
 ];

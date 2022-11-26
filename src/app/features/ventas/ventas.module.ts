@@ -11,13 +11,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { VentaDetallePageComponent } from './pages/venta-detalle-page/venta-detalle-page.component';
 
 
 
 @NgModule({
   declarations: [
     VentaResumidoPageComponent,
-    VentaDialogComponent
+    VentaDialogComponent,
+    VentaDetallePageComponent
   ],
   imports: [
     CommonModule,

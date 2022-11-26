@@ -9,7 +9,7 @@ import { Cliente } from '../../clientes/models/cliente.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DetalleDetalleVentassService {
+export class DetalleVentasService {
 
   detalleVentas: DetalleVenta[] = [];
   refresh$ = new Subject<void>();
