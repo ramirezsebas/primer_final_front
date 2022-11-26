@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ProductosModule } from './features/productos/productos.module';
 import { ClientesModule } from './features/clientes/clientes.module';
+import { VentasModule } from './features/ventas/ventas.module';
 
 
 
@@ -31,7 +32,8 @@ import { ClientesModule } from './features/clientes/clientes.module';
 
     // Modulos de la app
     ProductosModule,
-    ClientesModule
+    ClientesModule,
+    VentasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
