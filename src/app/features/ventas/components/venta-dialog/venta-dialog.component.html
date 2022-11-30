@@ -1,1 +1,46 @@
-<p>venta-dialog works!</p>
+<h1 mat-dialog-title>{{venta? "Actualizar Venta":"Crear Venta"}}</h1>
+<div mat-dialog-content class="mat-typography">
+  <p>Ingrese los datos</p>
+  <form [formGroup]="myForm">
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>RUC</mat-label>
+        <input matInput ngDefaultControl formControlName="ruc" />
+        <mat-error *ngIf="myForm.get('ruc')?.hasError('required')">
+          RUC es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput ngDefaultControl formControlName="nombre" />
+        <mat-error *ngIf="myForm.get('nombre')?.hasError('required')">
+          Nombre es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput ngDefaultControl formControlName="apellido" />
+        <mat-error *ngIf="myForm.get('apellido')?.hasError('required')">
+          Apellido es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+    <section>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput ngDefaultControl formControlName="email" />
+        <mat-error *ngIf="myForm.get('email')?.hasError('required')">
+          Email es requerido
+        </mat-error>
+      </mat-form-field>
+    </section>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="onClick()" cdkFocusInitial>{{venta?"Modificar":"Agregar"}}</button>
+</div>

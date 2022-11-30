@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VentaResumidoPageComponent } from './pages/venta-resumido-page/venta-resumido-page.component';
 import { VentaDialogComponent } from './components/venta-dialog/venta-dialog.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -32,7 +32,7 @@ import { VentaDetallePageComponent } from './pages/venta-detalle-page/venta-deta
     MatRippleModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatInputModule,
+    MatInputModule
 
   ]
 })
