@@ -4,37 +4,37 @@
   <form [formGroup]="myForm">
     <section>
       <mat-form-field appearance="fill">
-        <mat-label>RUC</mat-label>
-        <input matInput ngDefaultControl formControlName="ruc" />
-        <mat-error *ngIf="myForm.get('ruc')?.hasError('required')">
-          RUC es requerido
+        <mat-label>Cliente</mat-label>
+        <input matInput ngDefaultControl formControlName="cliente" />
+        <mat-error *ngIf="myForm.get('cliente')?.hasError('required')">
+          Cliente es requerido
         </mat-error>
       </mat-form-field>
     </section>
     <section>
       <mat-form-field appearance="fill">
-        <mat-label>Nombre</mat-label>
-        <input matInput ngDefaultControl formControlName="nombre" />
-        <mat-error *ngIf="myForm.get('nombre')?.hasError('required')">
-          Nombre es requerido
+        <mat-label>Factura</mat-label>
+        <input matInput ngDefaultControl formControlName="factura" />
+        <mat-error *ngIf="myForm.get('factura')?.hasError('required')">
+          Factura es requerido
         </mat-error>
       </mat-form-field>
     </section>
     <section>
       <mat-form-field appearance="fill">
-        <mat-label>Apellido</mat-label>
-        <input matInput ngDefaultControl formControlName="apellido" />
-        <mat-error *ngIf="myForm.get('apellido')?.hasError('required')">
-          Apellido es requerido
+        <mat-label>Fecha</mat-label>
+        <input matInput ngDefaultControl formControlName="fecha" />
+        <mat-error *ngIf="myForm.get('fecha')?.hasError('required')">
+          Fecha es requerido
         </mat-error>
       </mat-form-field>
     </section>
     <section>
       <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput ngDefaultControl formControlName="email" />
-        <mat-error *ngIf="myForm.get('email')?.hasError('required')">
-          Email es requerido
+        <mat-label>Total</mat-label>
+        <input matInput ngDefaultControl formControlName="total" />
+        <mat-error *ngIf="myForm.get('total')?.hasError('required')">
+          Total es requerido
         </mat-error>
       </mat-form-field>
     </section>

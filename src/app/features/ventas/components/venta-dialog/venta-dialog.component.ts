@@ -16,10 +16,10 @@ export class VentaDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      codigo: [this.venta?.cliente ?? uuid.v4(), Validators.required],
-      nombre: [this.venta?.factura ?? "", Validators.required],
-      precioVenta: [this.venta?.fecha ?? new Date(), Validators.required],
-      existencia: [this.venta?.total ?? "", Validators.required],
+      cliente: [this.venta?.cliente ?? "", Validators.required],
+      factura: [this.venta?.factura ?? "", Validators.required],
+      fecha: [this.venta?.fecha ?? new Date(), Validators.required],
+      total: [this.venta?.total ?? "", Validators.required],
     });
   }
 
